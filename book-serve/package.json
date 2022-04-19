@@ -1,0 +1,18 @@
+{
+  "name": "book-serve",
+  "version": "1.0.0",
+  "description": "xiangmu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bishe"
+  ],
+  "author": "Mr.jia",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.4",
+    "mongoose": "^6.3.0"
+  }
+}
