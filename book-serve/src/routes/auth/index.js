@@ -9,6 +9,7 @@ const router = new Router({ // 创建主路由。
     prefix:"/auth"
 })
 // 注册路由信息
+
 router.post('/register',async(ctx)=>{
     const {account,password,inviteCode} = getBody(ctx);
     const findCode = await InviteCode.findOne({
