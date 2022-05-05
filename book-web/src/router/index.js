@@ -2,15 +2,15 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: '/auth',
+    name: 'Auth',
     component: () => import(/* webpackChunkName: "auth" */ '../views/Auth/index.vue')
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
+  {
+    path: '/',
+    name: 'BasicLayout',
+    component: () => import(/* webpackChunkName: "BasicLayout" */ '../layouts/BasicLayout/index.vue')
+  }
 ]
 
 const router = createRouter({
