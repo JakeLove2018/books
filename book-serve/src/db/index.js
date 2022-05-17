@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('./Schemas/User.js');
 require('./Schemas/InviteCode.js');
+require('./Schemas/Book.js');
 const connect = () => {
     return new Promise((resolve) => {
         // 连接数据库并创建数据库;

@@ -6,13 +6,19 @@
                 <div class="title">图书管理系统</div>
             </div>
             <div class="right">
-                <div class="hello-msg"></div>
+                <div class="hello-msg">欢迎,XXX</div>
                 <div class="logout">tuichu</div>
             </div>
+            
         </div>
+        <div class="app-header-placeholder"></div>
         <div class="app-content">
-            <div class="left"></div>
-            <div class="right"></div>
+            <div class="left">
+                <AppNav />
+            </div>
+            <div class="right">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>
