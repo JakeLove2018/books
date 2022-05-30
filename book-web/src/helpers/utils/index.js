@@ -26,3 +26,13 @@ export const result = (response,authShowErrorMsg = true)=>{
 export const clone = (obj)=>{
     return JSON.parse(JSON.stringify(obj))
 }
+export const formTimestamo = (ts)=>{
+    const date = new Date(Number(ts))
+    const YYYY = date.getFullYear();
+    const MM = date.getMonth()+ 1 ;
+    const DD = date.getDate();
+    const HH = date.getHours();
+    const mm = date.getMilliseconds();
+    const ss = date.getSeconds();
+    return `${YYYY}年${MM}月${DD}日${HH}时${mm}分${ss}秒`
+}

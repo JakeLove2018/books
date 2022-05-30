@@ -11,10 +11,14 @@
             <a-button @click="show=true">添加一条</a-button>
             
         </space-between>
-        <a-table :dataSource="dataSource" :columns="columns" />
+        <a-table :dataSource="list" :columns="columns">
+            <template #publishDate="date">
+            
+            {{ formTimestamo(date.record.publishData) }}
+            </template>
+        </a-table>
         <a-divider></a-divider>
         <AddOne :show="show" @setShow="setShow"/>
-        
     </div>
 </template>
 
