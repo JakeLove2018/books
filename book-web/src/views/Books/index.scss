@@ -1,4 +1,10 @@
 .search{
     width: 200px;
-    
+    display: flex;
+    align-items: center;
+    position: relative;
+    #btn{
+        position: absolute;
+        left: 220px;
+    } 
 }
