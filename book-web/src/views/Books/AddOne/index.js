@@ -14,6 +14,7 @@ export default defineComponent({
             author:"",
             publishData:0,
             classify:"",
+            count:"",
         })
         const addForm = reactive(clone(defaultFormData))
         const submit =async ()=>{

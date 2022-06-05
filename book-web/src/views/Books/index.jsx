@@ -1,8 +1,8 @@
-import {defineComponent, reactive ,ref,onMounted, onBeforeMount}from 'vue';
+import {defineComponent, reactive ,ref,onMounted, onBeforeMount,}from 'vue';
 import AddOne from './AddOne/index.vue';
 import { book,list } from '@/service/index.js';
 import { result,formTimestamo } from '@/helpers/utils';
-import { message } from 'ant-design-vue';
+import { message,Modal,Input } from 'ant-design-vue';
 export default defineComponent({
     components:{
         AddOne
@@ -33,11 +33,18 @@ export default defineComponent({
                 dataIndex:"classify"
             },
             {
+                title: "库存",
+                slots: {
+                    customRender: "count"
+                }
+            },
+            {
                 title: "操作",
                 slots: {
                     customRender: "actions"
                 }
             },
+            
         ];
         const show = ref(false);
         var   list = ref([]);
@@ -92,6 +99,45 @@ export default defineComponent({
                 list.value.splice(idx,1);
                 // getList();
             })
+        };
+        const upDateCount = (type,record)=>{
+            let word = "增加";
+            if(type === 'OUT_COUNT'){
+                word = "减少"
+            }
+            Modal.confirm({
+                title: `确定${word}库存吗?`,
+                content:(
+                    <div><Input class="_book_input_count"></Input> </div>
+                ),
+                onOk: async() =>{
+                    const el = document.querySelector('._book_input_count');
+                    let num = el.value;
+                    const res =  await book.upDateCount({
+                        id:record._id,
+                        num,
+                        type,
+                    })
+                    console.log(el.value)
+                    result(res).success((data)=>{
+                  
+                        if (type === type) {
+                            num = Math.abs(num);
+                        } else {
+                            num = -Math.abs(num);
+                        }
+                        const one = list.value.find(()=>{
+                            return item._id === record._id
+                        });
+                        if(one){
+                            one.count = data.count + num;
+                            message.success(`成功${word} ${Math.abs(num)} 本书`);
+                        }
+                        
+                    });
+                 }
+            });
+            
         }
         return {
             columns,
@@ -107,7 +153,8 @@ export default defineComponent({
             backAll,
             getList,
             isSearch,
-            remove
+            remove,
+            upDateCount
         }
     }    
 })
